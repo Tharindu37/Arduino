@@ -241,7 +241,7 @@ void loop()
     return;
 
   }
-
+  Serial.print(lat_str);
 
   // Prepare the response
 

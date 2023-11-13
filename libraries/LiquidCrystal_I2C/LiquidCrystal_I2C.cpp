@@ -9,7 +9,7 @@
 #define printIIC(args)	Wire.write(args)
 inline size_t LiquidCrystal_I2C::write(uint8_t value) {
 	send(value, Rs);
-	return 0;
+	return 1;
 }
 
 #else
@@ -136,7 +136,7 @@ void LiquidCrystal_I2C::home(){
 
 void LiquidCrystal_I2C::setCursor(uint8_t col, uint8_t row){
 	int row_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
-	if ( row > _numlines ) {
+	if ( row > (_numlines-1) ) {
 		row = _numlines-1;    // we count rows starting w/0
 	}
 	command(LCD_SETDDRAMADDR | (col + row_offsets[row]));
